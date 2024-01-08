@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Configurations>Debug;Release;Debug-Deploy</Configurations>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="0Harmony">
+			<HintPath>Libs\0Harmony.dll</HintPath>
+		</Reference>
+		<Reference Include="Assembly-CSharp">
+			<HintPath>Libs\Assembly-CSharp.dll</HintPath>
+		</Reference>
+		<Reference Include="BepInEx">
+			<HintPath>Libs\BepInEx.dll</HintPath>
+		</Reference>
+		<Reference Include="BepInEx.Harmony">
+			<HintPath>Libs\BepInEx.Harmony.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine">
+			<HintPath>Libs\UnityEngine.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>Libs\UnityEngine.CoreModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ImageConversionModule">
+			<HintPath>Libs\UnityEngine.ImageConversionModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UniTask">
+			<HintPath>Libs\UniTask.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="xcopy /Y /F &quot;$(TargetPath)&quot; &quot;C:\Users\Rodrigo\OneDrive\Documentos\My Games\Stationeers\mods\BetterAdvancedTablet [StationeersMods]&quot;" />
+		<!--<Exec Command="D:\Games\Libraries\Steam\steamapps\common\Stationeers\rocketstation.exe" />-->
+	</Target>
+
+</Project>

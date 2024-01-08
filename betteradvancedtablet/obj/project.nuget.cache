@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "yOw+Mjn88LgA/jh5i6X8qDI9P7Jry6TV2b5fo7vBcGcAjsZ6rGqku0l8RaNFl+JIs14hlYOaCLZ30hiyYSDY/A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Rodrigo\\OneDrive\\Documentos\\GitHub\\betteradvancedtablet\\betteradvancedtablet\\betteradvancedtablet.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Rodrigo\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Rodrigo\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
