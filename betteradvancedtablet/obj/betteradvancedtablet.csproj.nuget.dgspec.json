@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Rodrigo\\OneDrive\\Documentos\\GitHub\\betteradvancedtablet\\betteradvancedtablet\\betteradvancedtablet.csproj": {}
+    "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\betteradvancedtablet\\betteradvancedtablet\\betteradvancedtablet.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Rodrigo\\OneDrive\\Documentos\\GitHub\\betteradvancedtablet\\betteradvancedtablet\\betteradvancedtablet.csproj": {
+    "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\betteradvancedtablet\\betteradvancedtablet\\betteradvancedtablet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rodrigo\\OneDrive\\Documentos\\GitHub\\betteradvancedtablet\\betteradvancedtablet\\betteradvancedtablet.csproj",
+        "projectUniqueName": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\betteradvancedtablet\\betteradvancedtablet\\betteradvancedtablet.csproj",
         "projectName": "betteradvancedtablet",
-        "projectPath": "C:\\Users\\Rodrigo\\OneDrive\\Documentos\\GitHub\\betteradvancedtablet\\betteradvancedtablet\\betteradvancedtablet.csproj",
-        "packagesPath": "C:\\Users\\Rodrigo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rodrigo\\OneDrive\\Documentos\\GitHub\\betteradvancedtablet\\betteradvancedtablet\\obj\\",
+        "projectPath": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\betteradvancedtablet\\betteradvancedtablet\\betteradvancedtablet.csproj",
+        "packagesPath": "C:\\Users\\rodri\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\betteradvancedtablet\\betteradvancedtablet\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Rodrigo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rodri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -58,7 +63,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     }
