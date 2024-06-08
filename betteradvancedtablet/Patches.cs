@@ -3,6 +3,7 @@ using Assets.Scripts;
 using Assets.Scripts.Inventory;
 using Assets.Scripts.Objects;
 using Assets.Scripts.Objects.Items;
+using Assets.Scripts.Serialization;
 using Assets.Scripts.UI;
 using BetterAdvancedTablet;
 using HarmonyLib;
@@ -169,13 +170,25 @@ namespace BetterAdvancedTablet
 
         }
 
-        [HarmonyPatch(typeof(MainMenuWindowManager), "EnableMainMenuPage")]
+        [HarmonyPatch(typeof(World), "NewOrContinue")]
         public class MainMenuWindowManagerPatches
         {
             /// <summary>
-            /// Injects a call to AdvancedTabletPrefabPatch when main menu is loaded.
+            /// Injects a call to AdvancedTabletPrefabPatch when world is loaded or created.
             /// </summary>
-            public static void Postfix()
+            public static void Prefix()
+            {
+                AdvancedTabletPrefabPatch();
+            }
+        }
+
+        [HarmonyPatch(typeof(NetworkClient), "ProcessJoinData")]
+        public class NetworkClientProcessJoinDataPatches
+        {
+            /// <summary>
+            /// Injects a call to AdvancedTabletPrefabPatch when connecting to server.
+            /// </summary>
+            public static void Prefix()
             {
                 AdvancedTabletPrefabPatch();
             }
