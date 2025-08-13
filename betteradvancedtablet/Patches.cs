@@ -101,6 +101,7 @@ namespace BetterAdvancedTablet
         }
 
         public static int hasRun = 0;
+
         /// <summary>
         /// Alters ItemAdvancedTablet.Slots list, adding 2 cartridge slots.
         /// Also enables OnPrimaryUse for the advanced tablet by
@@ -171,7 +172,7 @@ namespace BetterAdvancedTablet
         }
 
         [HarmonyPatch(typeof(World), "StartNewWorld")]
-        public class MainMenuWindowManagerPatches
+        public class StartNewWorldPatches
         {
             /// <summary>
             /// Injects a call to AdvancedTabletPrefabPatch when world is loaded or created.
@@ -181,7 +182,18 @@ namespace BetterAdvancedTablet
                 AdvancedTabletPrefabPatch();
             }
         }
-
+        
+        [HarmonyPatch(typeof(XmlSaveLoad), "LoadWorld")]
+        public class LoadWorldPatches
+        {
+            /// <summary>
+            /// Injects a call to AdvancedTabletPrefabPatch when world is loaded or created.
+            /// </summary>
+            public static void Prefix()
+            {
+                AdvancedTabletPrefabPatch();
+            }
+        }
         [HarmonyPatch(typeof(NetworkClient), "ProcessJoinData")]
         public class NetworkClientProcessJoinDataPatches
         {
