@@ -170,7 +170,7 @@ namespace BetterAdvancedTablet
 
         }
 
-        [HarmonyPatch(typeof(World), "NewOrContinue")]
+        [HarmonyPatch(typeof(World), "StartNewWorld")]
         public class MainMenuWindowManagerPatches
         {
             /// <summary>
