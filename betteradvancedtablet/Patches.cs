@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using Assets.Scripts;
 using Assets.Scripts.Inventory;
 using Assets.Scripts.Objects;
@@ -169,6 +170,18 @@ namespace BetterAdvancedTablet
                     i++;
                 }
 
+        }
+
+		[HarmonyPatch(typeof(World), "NewOrContinue")]
+        public class MainMenuWindowManagerPatches
+        {
+            /// <summary>
+            /// Injects a call to AdvancedTabletPrefabPatch when world is loaded or created.
+            /// </summary>
+            public static void Prefix()
+            {
+                AdvancedTabletPrefabPatch();
+            }
         }
 
         [HarmonyPatch(typeof(World), "StartNewWorld")]
