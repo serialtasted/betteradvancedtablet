@@ -31,7 +31,19 @@ namespace BetterAdvancedTablet
         {
             Debug.Log($"Plugin {PluginInfo.PLUGIN_NAME} {PluginInfo.PLUGIN_VERSION} is loaded!");
             var harmony = new Harmony($"{PluginInfo.PLUGIN_GUID}");
-            harmony.PatchAll();
+			
+            AccessTools.GetTypesFromAssembly(typeof(Patches).Assembly).Do(type =>
+            {
+                try
+                {
+					Debug.Log($"Patching {type.FullName}");
+                    harmony.CreateClassProcessor(type).Patch();
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogException(e);
+                }
+            });
             Debug.Log($"{PluginInfo.PLUGIN_NAME} Patching complete!");
         }
 
