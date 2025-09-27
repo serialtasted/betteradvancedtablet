@@ -41,7 +41,8 @@ namespace BetterAdvancedTablet
                 }
                 catch (System.Exception e)
                 {
-                    Debug.LogException(e);
+                    Debug.Log($"Exception Caught: {e.GetType().FullName} -- {e.Message}");
+                    Debug.Log($"Trace: {e.StackTrace}");
                 }
             });
             Debug.Log($"{PluginInfo.PLUGIN_NAME} Patching complete!");
