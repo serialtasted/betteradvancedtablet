@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using System.Reflection;
 using Assets.Scripts;
 using Assets.Scripts.Inventory;
@@ -175,12 +176,55 @@ namespace BetterAdvancedTablet
 
         }
 
-		[HarmonyPatch(typeof(World), "NewOrContinue")]
+        [HarmonyPatch]
         public class MainMenuWindowManagerPatches
         {
+            private static List<MethodBase> cachedTargets;
+
+            private static List<MethodBase> FindTargets()
+            {
+                var targets = new List<MethodBase>();
+
+                var worldMethod = AccessTools.Method(typeof(World), "NewOrContinue");
+                if (worldMethod != null)
+                {
+                    targets.Add(worldMethod);
+                }
+
+                var mainMenuType = AccessTools.TypeByName("Assets.Scripts.UI.MainMenu.MainMenuWindowManager");
+                if (mainMenuType != null)
+                {
+                    var onPageEnabled = AccessTools.Method(mainMenuType, "MainMenuWindowManagerOnPageEnabled");
+                    if (onPageEnabled != null)
+                    {
+                        targets.Add(onPageEnabled);
+                    }
+                }
+
+                return targets;
+            }
+
+            static bool Prepare()
+            {
+                cachedTargets = FindTargets();
+
+                if (cachedTargets.Count == 0 && DebugMode)
+                {
+                    Debug.Log($"{PluginInfo.PLUGIN_NAME}: No targets found for MainMenuWindowManagerPatches. Skipping patch.");
+                }
+
+                return cachedTargets.Count > 0;
+            }
+
+            static IEnumerable<MethodBase> TargetMethods()
+            {
+                return cachedTargets ?? (cachedTargets = FindTargets());
+            }
+
             /// <summary>
             /// Injects a call to AdvancedTabletPrefabPatch when world is loaded or created.
             /// </summary>
+            [HarmonyPrefix]
             public static void Prefix()
             {
                 AdvancedTabletPrefabPatch();
