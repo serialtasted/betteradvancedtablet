@@ -134,12 +134,15 @@ namespace BetterAdvancedTablet
             //get the first cartridge slot
             var CartridgeSlot = ItemAdvancedTablet.Slots[1];
 
-            //create slots dynamicly
-            for (int countSlots = 0; countSlots < TabletSlots; countSlots++)
+            var slotsToAdd = Math.Min(TabletSlots, 6);
+            if (TabletSlots > 6 && DebugMode)
             {
-                if (countSlots > 5)
-                    return;
+                Debug.Log($"{PluginInfo.PLUGIN_NAME}: Requested {TabletSlots} extra slots but only 6 are supported. Clamping to 6 extra slots.");
+            }
 
+            //create slots dynamically (up to 6 extra slots)
+            for (int countSlots = 0; countSlots < slotsToAdd; countSlots++)
+            {
                 Slot newSlot = new Slot();
                 newSlot.Type = CartridgeSlot.Type;
                 newSlot.IsHiddenInSeat = CartridgeSlot.IsHiddenInSeat;
