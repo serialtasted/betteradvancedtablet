@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("betteradvancedtablet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1a620ec5f9df44d67e40dfe68e341e0b63d5a657")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ab6472a74cfe86573d39f6b170031ce0348a9d5")]
 [assembly: System.Reflection.AssemblyProductAttribute("betteradvancedtablet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("betteradvancedtablet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

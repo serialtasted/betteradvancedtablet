@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\betteradvancedtablet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FD9DAA24-3D38-4EFF-B41B-C08B132FBC45}|betteradvancedtablet\\betteradvancedtablet.csproj|c:\\users\\rodri\\onedrive\\documentos\\github\\betteradvancedtablet\\betteradvancedtablet\\plugininfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FD9DAA24-3D38-4EFF-B41B-C08B132FBC45}|betteradvancedtablet\\betteradvancedtablet.csproj|solutionrelative:betteradvancedtablet\\plugininfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FD9DAA24-3D38-4EFF-B41B-C08B132FBC45}|betteradvancedtablet\\betteradvancedtablet.csproj|c:\\users\\rodri\\onedrive\\documentos\\github\\betteradvancedtablet\\betteradvancedtablet\\patches.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FD9DAA24-3D38-4EFF-B41B-C08B132FBC45}|betteradvancedtablet\\betteradvancedtablet.csproj|solutionrelative:betteradvancedtablet\\patches.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD9DAA24-3D38-4EFF-B41B-C08B132FBC45}|betteradvancedtablet\\betteradvancedtablet.csproj|c:\\users\\rodri\\onedrive\\documentos\\github\\betteradvancedtablet\\betteradvancedtablet\\plugininfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD9DAA24-3D38-4EFF-B41B-C08B132FBC45}|betteradvancedtablet\\betteradvancedtablet.csproj|solutionrelative:betteradvancedtablet\\plugininfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FD9DAA24-3D38-4EFF-B41B-C08B132FBC45}|betteradvancedtablet\\betteradvancedtablet.csproj|c:\\users\\rodri\\onedrive\\documentos\\github\\betteradvancedtablet\\betteradvancedtablet\\betteradvancedtablet.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -26,11 +26,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "PluginInfo.cs",
               "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\betteradvancedtablet\\betteradvancedtablet\\PluginInfo.cs",
               "RelativeDocumentMoniker": "betteradvancedtablet\\PluginInfo.cs",
@@ -38,18 +38,17 @@
               "RelativeToolTip": "betteradvancedtablet\\PluginInfo.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T01:02:35.786Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-08T01:02:35.786Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Patches.cs",
               "DocumentMoniker": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\betteradvancedtablet\\betteradvancedtablet\\Patches.cs",
               "RelativeDocumentMoniker": "betteradvancedtablet\\Patches.cs",
               "ToolTip": "C:\\Users\\rodri\\OneDrive\\Documentos\\GitHub\\betteradvancedtablet\\betteradvancedtablet\\Patches.cs",
               "RelativeToolTip": "betteradvancedtablet\\Patches.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADMAAABEAAAA",
+              "ViewState": "AQIAAG0AAAAAAAAAAAAQwHkAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-08T01:02:35.8Z",
               "EditorCaption": ""
@@ -64,8 +63,7 @@
               "RelativeToolTip": "betteradvancedtablet\\BetterAdvancedTabletPlugin.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAC0AAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T01:02:35.803Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-08T01:02:35.803Z"
             },
             {
               "$type": "Document",
@@ -77,8 +75,7 @@
               "RelativeToolTip": "betteradvancedtablet\\betteradvancedtablet.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-06-08T01:02:35.806Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-08T01:02:35.806Z"
             }
           ]
         }

@@ -175,6 +175,7 @@ namespace BetterAdvancedTablet
 
         }
 
+        /* Disable the old patch but don't remove it
 		[HarmonyPatch(typeof(World), "NewOrContinue")]
         public class MainMenuWindowManagerPatches
         {
@@ -186,6 +187,7 @@ namespace BetterAdvancedTablet
                 AdvancedTabletPrefabPatch();
             }
         }
+        */
 
         [HarmonyPatch(typeof(World), "StartNewWorld")]
         public class StartNewWorldPatches
