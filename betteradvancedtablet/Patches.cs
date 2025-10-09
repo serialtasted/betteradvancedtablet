@@ -274,6 +274,12 @@ namespace BetterAdvancedTablet
 
                 if (DebugMode) Debug.Log($"{PluginInfo.PLUGIN_NAME}:OnUsePrimaryPatch called Item.OnUsePrimary");
 
+                if (!ClickForNextSlot)
+                {
+                    if (DebugMode) Debug.Log($"{PluginInfo.PLUGIN_NAME}:OnUsePrimaryPatch ClickForNextSlot is disabled");
+                    return true;
+                }
+
                 var advancedTablet = __instance as AdvancedTablet;
                 if (!(bool)(UnityEngine.Object)advancedTablet)
                 {
