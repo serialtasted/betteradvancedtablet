@@ -10,9 +10,11 @@ namespace BetterAdvancedTablet
     public class BetterAdvancedTabletPlugin : BaseUnityPlugin
     {
         private ConfigEntry<int> configTabletSlots;
+        private ConfigEntry<bool> configClickForNextSlot;
         private ConfigEntry<bool> configDebugMode;
 
         public static int TabletSlots;
+        public static bool ClickForNextSlot;
         public static bool DebugMode;
 
         public static void ModLog(string text)
@@ -65,6 +67,12 @@ namespace BetterAdvancedTablet
                                      2, // The default value
                                      "Number of slots to add on the Advanced Tablet.\nVanilla has 2 already. You can add up to 6 extra slots for a total of 8 slots.\nCAUTION! Removing slots on a already created world with more slots will crash the game."); // Description of the option to show in the config file
             TabletSlots = configTabletSlots.Value;
+
+            configClickForNextSlot = Config.Bind("General",   // The section under which the option is shown
+                                     "ClickForNextSlot",  // The key of the configuration option in the configuration file
+                                     true, // The default value
+                                     "Enables using Primary Action (default left click) to switch to the next cartridge"); // Description of the option to show in the config file
+            ClickForNextSlot = configClickForNextSlot.Value;
 
             configDebugMode = Config.Bind("Debug",   // The section under which the option is shown
                                      "DebugMode",  // The key of the configuration option in the configuration file
