@@ -10,7 +10,7 @@ namespace BetterAdvancedTablet
     {
         public const string PLUGIN_GUID = "BetterAdvancedTablet";
         public const string PLUGIN_NAME = "Better Advanced Tablet";
-        public const string PLUGIN_VERSION = "2.2.1";
+        public const string PLUGIN_VERSION = "2.3.1";
         public const uint PLUGIN_ID = 0;
     }
 }

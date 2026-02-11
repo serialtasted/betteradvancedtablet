@@ -45,58 +45,40 @@ namespace BetterAdvancedTablet
             /// <returns></returns>
             [HarmonyPrefix]
             [HarmonyPatch(nameof(AdvancedTablet.InteractWith))]
-            public static bool InteractWithPatch(AdvancedTablet __instance,
-                                            ref Thing.DelayedActionInstance __result,
-                                            ref int ___currentCartSlot,
-                                            Interactable interactable,
-                                            Interaction interaction,
-                                            bool doAction = true)
+            public static void InteractWithPrefix(
+                AdvancedTablet __instance,
+                Interactable interactable,
+                Interaction interaction,
+                bool doAction)
             {
                 if (!doAction)
-                    return true;
-                if (interactable.Action == InteractableType.Button1)
+                    return;
+
+                if (interactable.Action != InteractableType.Button1 &&
+                    interactable.Action != InteractableType.Button2)
+                    return;
+
+                int slotCount = __instance.CartridgeSlots.Count;
+                if (slotCount <= 1)
+                    return;
+
+                int currentMode = __instance.Mode;
+
+                for (int i = 1; i <= slotCount; i++)
                 {
-                    if (DebugMode) Debug.Log($"{PluginInfo.PLUGIN_NAME}:InteractWithPatch InteractableType.Button1");
-                    var currentCartSlot = ___currentCartSlot;
-                    for (int i = ___currentCartSlot; i <= ___currentCartSlot + __instance.CartridgeSlots.Count - 1; i++)
+                    int index;
+
+                    if (interactable.Action == InteractableType.Button1)
+                        index = (currentMode + i) % slotCount;
+                    else
+                        index = (currentMode - i + slotCount) % slotCount;
+
+                    if (!__instance.CartridgeSlots[index].IsEmpty())
                     {
-                        //next cartridge slot index
-                        int j = (i + 1) % __instance.CartridgeSlots.Count;
-                        if (DebugMode) Debug.Log($"{PluginInfo.PLUGIN_NAME}:InteractWithPatch next cartridge slot index = {j}");
-                        //check if CartridgeSlots[next cartridge slot index] is empty.
-                        if ((System.Object)__instance.CartridgeSlots[j].Get() != (System.Object)null)
-                        {
-                            //if not empty, return to original method
-                            if (DebugMode) Debug.Log($"{PluginInfo.PLUGIN_NAME}:InteractWithPatch next cartridge slot is not empty.");
-                            return true;
-                        }
-                        //if empty, decrement ___currentCartSlot.
-                        ___currentCartSlot = j;
+                        __instance.Mode = index;
+                        break;
                     }
                 }
-                if (interactable.Action == InteractableType.Button2)
-                {
-                    if (DebugMode) Debug.Log($"{PluginInfo.PLUGIN_NAME}:InteractWithPatch InteractableType.Button2");
-                    var currentCartSlot = ___currentCartSlot;
-                    for (int i = ___currentCartSlot; i >= ___currentCartSlot - __instance.CartridgeSlots.Count + 1; i--)
-                    {
-                        //next cartridge slot index
-                        int j = (i - 1) % __instance.CartridgeSlots.Count;
-                        if (j < 0)
-                            j = __instance.CartridgeSlots.Count + j;
-                        if (DebugMode) Debug.Log($"{PluginInfo.PLUGIN_NAME}:InteractWithPatch next cartridge slot index = {j}");
-                        //check if CartridgeSlots[next cartridge slot index] is empty.
-                        if ((System.Object)__instance.CartridgeSlots[j].Get() != (System.Object)null)
-                        {
-                            //if not empty, return to original method
-                            if (DebugMode) Debug.Log($"{PluginInfo.PLUGIN_NAME}:InteractWithPatch next cartridge slot is not empty.");
-                            return true;
-                        }
-                        //if empty, decrement ___currentCartSlot.
-                        ___currentCartSlot = j;
-                    }
-                }
-                return true;
             }
 
         }
