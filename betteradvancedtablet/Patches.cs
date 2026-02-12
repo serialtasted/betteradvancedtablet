@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using Assets.Scripts;
 using Assets.Scripts.Inventory;
@@ -45,41 +45,49 @@ namespace BetterAdvancedTablet
             /// <returns></returns>
             [HarmonyPrefix]
             [HarmonyPatch(nameof(AdvancedTablet.InteractWith))]
-            public static void InteractWithPrefix(
+            public static bool InteractWithPrefix(
                 AdvancedTablet __instance,
                 Interactable interactable,
                 Interaction interaction,
-                bool doAction)
+                bool doAction,
+                ref Thing.DelayedActionInstance __result)
             {
+                Debug.Log($"[BAT] InteractWithPrefix called. Action={interactable.Action} ModeBefore={__instance.Mode}");
+
                 if (!doAction)
-                    return;
+                    return true;
 
                 if (interactable.Action != InteractableType.Button1 &&
                     interactable.Action != InteractableType.Button2)
-                    return;
+                    return true;
 
                 int slotCount = __instance.CartridgeSlots.Count;
                 if (slotCount <= 1)
-                    return;
+                    return true;
 
                 int currentMode = __instance.Mode;
 
                 for (int i = 1; i <= slotCount; i++)
                 {
-                    int index;
-
-                    if (interactable.Action == InteractableType.Button1)
-                        index = (currentMode + i) % slotCount;
-                    else
-                        index = (currentMode - i + slotCount) % slotCount;
+                    int index = interactable.Action == InteractableType.Button1
+                        ? (currentMode + i) % slotCount
+                        : (currentMode - i + slotCount) % slotCount;
 
                     if (!__instance.CartridgeSlots[index].IsEmpty())
                     {
+                        Debug.Log($"[BAT] Setting Mode to {index}");
                         __instance.Mode = index;
                         break;
                     }
                 }
+
+                Debug.Log($"[BAT] InteractWithPrefix end. ModeAfter={__instance.Mode}");
+                __result = Thing.DelayedActionInstance.Success("Set");
+                return false;
             }
+
+            
+
 
         }
 
@@ -217,18 +225,28 @@ namespace BetterAdvancedTablet
             /// <returns></returns>
             public static async UniTaskVoid NextCartridge(AdvancedTablet advancedTablet)
             {
+                Debug.Log($"[BAT] NextCartridge START. ModeBefore={advancedTablet.Mode}");
+
                 if (DebugMode) Debug.Log($"{PluginInfo.PLUGIN_NAME}:NextCartridge mouse down");
                 if (MouseDown)
                     return;
                 MouseDown = true;
                 Interaction interaction = new Interaction((Assets.Scripts.Objects.Thing)InventoryManager.Parent, InventoryManager.ActiveHandSlot, CursorManager.CursorThing, KeyManager.GetButton(KeyMap.QuantityModifier));
                 if (KeyManager.GetButton(KeyMap.QuantityModifier))
+                {
+                    Debug.Log("[BAT] Calling InteractButton2");
                     advancedTablet.InteractWith(advancedTablet.InteractButton2, interaction);
+                }
                 else
+                {
+                    Debug.Log("[BAT] Calling InteractButton1");
                     advancedTablet.InteractWith(advancedTablet.InteractButton1, interaction);
+                }
 
                 while (KeyManager.GetMouse("Primary") && !KeyManager.GetButton(KeyMap.SwapHands) && advancedTablet.OnOff && advancedTablet.Powered)
                     await UniTask.NextFrame();
+                    Debug.Log($"[BAT] NextCartridge END. ModeAfter={advancedTablet.Mode}");
+
                 MouseDown = false;
                 if (DebugMode) Debug.Log($"{PluginInfo.PLUGIN_NAME}:NextCartridge mouse up");
             }
@@ -253,6 +271,8 @@ namespace BetterAdvancedTablet
                                     ulong steamId,
                                     bool authoringMode)
             {
+                Debug.Log("[BAT] OnUsePrimary triggered");
+
 
                 if (DebugMode) Debug.Log($"{PluginInfo.PLUGIN_NAME}:OnUsePrimaryPatch called Item.OnUsePrimary");
 
@@ -271,8 +291,9 @@ namespace BetterAdvancedTablet
                 if (!advancedTablet.OnOff || !advancedTablet.Powered)
                     return true;
                 if (DebugMode) Debug.Log($"{PluginInfo.PLUGIN_NAME}: calling NextCartridge");
+                Debug.Log("[BAT] About to call NextCartridge");
                 AsyncMethods.NextCartridge(advancedTablet).Forget();
-                return false;
+                return true;
             }
         }
     }

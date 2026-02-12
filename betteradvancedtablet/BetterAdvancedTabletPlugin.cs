@@ -1,4 +1,3 @@
-﻿
 using BepInEx;
 using HarmonyLib;
 using UnityEngine;
@@ -20,11 +19,13 @@ namespace BetterAdvancedTablet
         public static void ModLog(string text)
         {
             Debug.Log($"{PluginInfo.PLUGIN_NAME}: " + text);
+            Debug.Log("######## BAT DEVELOPMENT BUILD ########");
         }
 
         private void Awake()
         {
             // Plugin startup logic
+            Debug.Log("######## BAT DEVELOPMENT BUILD ########");
             HandleConfig();
             Patch();
         }
